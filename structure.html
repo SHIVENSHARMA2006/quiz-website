@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Interactive Quiz System</title>
+    
+    <link rel="stylesheet" href="styles.css"> 
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+
+    <div id="loading-container" class="loading-message hidden">
+        <p>Loading questions, please wait...</p>
+        </div>
+    
+    <div id="message-container" class="message-container hidden">
+        </div>
+
+    <div class="container">
+        
+        <header>
+            <h1 class="main-heading">🧠 Interactive Quiz Master</h1>
+            <p class="subtitle">Select your subject and test your knowledge!</p>
+        </header>
+        
+        <section id="home-section">
+            <h2 class="section-heading">Choose a Subject</h2>
+            <div class="subject-selection">
+                <div class="subject-card" onclick="openStudentDetails('Physics')">
+                    <h3>Physics</h3>
+                    <p>Mechanics, Thermodynamics & Waves</p>
+                </div>
+                
+                <div class="subject-card" onclick="openStudentDetails('Chemistry')">
+                    <h3>Chemistry</h3>
+                    <p>Organic, Inorganic & Physical</p>
+                </div>
+                
+                <div class="subject-card" onclick="openStudentDetails('Mathematics')">
+                    <h3>Mathematics</h3>
+                    <p>Calculus, Algebra & Geometry</p>
+                </div>
+            </div>
+
+            <hr>
+
+            <h2 class="section-heading">View Past Results</h2>
+            <div class="input-group">
+                <input type="text" id="prev-result-name-input" class="text-input" placeholder="Enter your name">
+                <button class="btn btn-secondary" onclick="viewPreviousResults()">View History</button>
+            </div>
+        </section>
+
+        <section id="details-section" class="hidden">
+            <h2 class="section-heading" id="details-subject-heading">Starting Quiz</h2>
+            <p class="subtitle">Please enter your name to begin the test.</p>
+            
+            <div style="text-align: center;">
+                <input type="text" id="student-name-input" class="text-input" placeholder="Enter Your Full Name" required>
+                <button class="btn btn-submit" onclick="startQuiz()">Start Quiz Now</button>
+                <button class="btn btn-secondary" onclick="showSection('home-section')">Cancel</button>
+            </div>
+        </section>
+        
+        <section id="quiz-section" class="hidden">
+            <h2 class="section-heading" id="quiz-heading">Subject Quiz - Welcome</h2>
+            <p class="subtitle">Select the correct option for each question.</p>
+            
+            <form id="quiz-form">
+                </form>
+            
+            <div class="quiz-controls">
+                <button class="btn btn-submit" onclick="submitQuiz()">Submit Quiz</button>
+                <button class="btn btn-secondary" onclick="showSection('home-section')">Back to Home</button>
+            </div>
+        </section>
+
+        <section id="result-section" class="hidden">
+            <h2 class="section-heading">Quiz Results</h2>
+            
+            <div class="score-summary">
+                <p class="summary-title">Congratulations, <span id="result-student-name"></span>!</p>
+                <p class="final-score">Your score for <span id="result-subject"></span> is: <br> <strong id="result-score">0</strong> / (Max Score)</p>
+            </div>
+            
+            <h3 class="section-heading">Detailed Answer Key</h3>
+            <div id="answer-key">
+                </div>
+            
+            <div class="quiz-controls">
+                <button class="btn btn-primary" onclick="showSection('home-section')">Start New Quiz</button>
+            </div>
+        </section>
+
+        <section id="previous-results-section" class="hidden">
+            <h2 class="section-heading">Past Results for <span id="prev-results-student-name"></span></h2>
+            <p class="subtitle">List of previously taken quizzes.</p>
+            
+            <ul id="previous-results-list">
+                </ul>
+            
+            <div class="quiz-controls">
+                <button class="btn btn-secondary" onclick="showSection('home-section')">Back to Home</button>
+            </div>
+        </section>
+
+    </div>
+    
+    <script src="script.js"></script>
+
+</body>
+</html>
