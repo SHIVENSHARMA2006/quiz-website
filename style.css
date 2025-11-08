@@ -1,0 +1,355 @@
+/* ------------------------------------- */
+/* 1. Configuration & Global Styles */
+/* ------------------------------------- */
+
+:root {
+    --color-primary: #007BFF; /* Bright Blue for actions/links */
+    --color-secondary: #6c757d; /* Grey for minor actions */
+    --color-success: #28a745; /* Green for correct/success */
+    --color-error: #dc3545; /* Red for incorrect/error */
+    --color-background: #f8f9fa; /* Light background */
+    --color-card-bg: #ffffff;
+    --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-lift: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+* {
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out; /* Global transition for smoothness */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-background);
+    color: #343a40;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    background: var(--color-card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-subtle);
+}
+
+h1, h2 {
+    text-align: center;
+    color: var(--color-primary);
+    margin-bottom: 25px;
+}
+.main-heading {
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+.section-heading {
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 10px;
+    margin-top: 30px;
+}
+.subtitle {
+    text-align: center;
+    color: var(--color-secondary);
+    margin-bottom: 30px;
+}
+
+/* ------------------------------------- */
+/* 2. Interactive Elements */
+/* ------------------------------------- */
+
+.btn {
+    cursor: pointer;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 5px;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
+}
+
+.btn-secondary {
+    background-color: var(--color-secondary);
+    color: white;
+}
+.btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+.btn-submit {
+    background-color: var(--color-success);
+    color: white;
+    font-size: 1.1rem;
+}
+.btn-submit:hover {
+    background-color: #1e7e34;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(40, 167, 69, 0.5);
+}
+
+.text-input, #prev-result-name-input {
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.text-input:focus, #prev-result-name-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+.input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.input-group input {
+    flex-grow: 1;
+    max-width: 400px;
+}
+
+
+/* ------------------------------------- */
+/* 3. Home Page Styles */
+/* ------------------------------------- */
+
+.subject-selection {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 40px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.subject-card {
+    flex: 1;
+    min-width: 250px;
+    padding: 25px;
+    background-color: #eaf3ff; /* Lighter shade of primary */
+    color: var(--color-primary);
+    border: 1px solid #cce5ff;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-subtle);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.subject-card:hover {
+    background-color: var(--color-primary);
+    color: var(--color-card-bg);
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lift);
+}
+.subject-card h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1.5rem;
+}
+.subject-card p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+
+/* ------------------------------------- */
+/* 4. Quiz Styles */
+/* ------------------------------------- */
+
+.question-block {
+    background: var(--color-card-bg);
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+.question-block p {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    line-height: 1.6; /* Better readability for math content */
+}
+.options label {
+    display: flex; /* Use flex to align radio and text */
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 12px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+.options label:hover {
+    background-color: #f5f5f5;
+    border-color: #c7c7c7;
+}
+.options input[type="radio"] {
+    margin-right: 15px;
+    min-width: 15px;
+    height: 15px;
+    accent-color: var(--color-primary);
+}
+.options input[type="radio"]:checked + span {
+    font-weight: 700;
+    color: var(--color-primary);
+}
+.quiz-controls {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* ------------------------------------- */
+/* 5. Result Styles */
+/* ------------------------------------- */
+
+.score-summary {
+    text-align: center;
+    padding: 30px;
+    margin-bottom: 30px;
+    background-color: #e6f7e8; /* Light success background */
+    border: 2px solid var(--color-success);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.2);
+}
+.score-summary .summary-title {
+    color: var(--color-success);
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+.score-summary .final-score {
+    font-size: 1.8rem;
+    margin-top: 10px;
+    color: #343a40;
+}
+.score-summary #result-score {
+    font-weight: 900;
+    color: #1a7e34;
+}
+
+.answer-key-item {
+    border: 1px solid #e9ecef;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    background-color: var(--color-card-bg);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+.answer-key-item p {
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+.correct-answer {
+    color: var(--color-success);
+    font-weight: bold;
+}
+.incorrect-answer {
+    color: var(--color-error);
+    font-weight: bold;
+}
+.your-selection {
+    font-style: italic;
+    padding-left: 10px;
+    border-left: 3px solid var(--color-primary);
+}
+
+
+/* ------------------------------------- */
+/* 6. Previous Results Styles */
+/* ------------------------------------- */
+
+#previous-results-list {
+    list-style: none;
+    padding: 0;
+}
+#previous-results-list li {
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #f0f8ff; /* Light blue */
+    border-left: 5px solid var(--color-primary);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+#previous-results-list li:hover {
+    background-color: #e1efff;
+}
+
+/* ------------------------------------- */
+/* 7. Utility & Message Styles */
+/* ------------------------------------- */
+
+.hidden {
+    display: none !important;
+}
+.loading-message {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    padding: 50px 0;
+}
+.message-container {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 10px 0;
+}
+.message-container > div {
+    border: 1px solid transparent;
+    font-weight: 600;
+}
+.message-container > div[style*="#f44336"] { /* Error styles */
+    background-color: #f8d7da;
+    color: var(--color-error);
+    border-color: #f5c6cb;
+}
+.message-container > div[style*="#4CAF50"] { /* Success styles */
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px 15px;
+    }
+    .subject-selection {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .subject-card {
+        min-width: 100%;
+    }
+    .input-group {
+        flex-direction: column;
+    }
+    .input-group input {
+        margin-right: 0 !important;
+    }
+}
